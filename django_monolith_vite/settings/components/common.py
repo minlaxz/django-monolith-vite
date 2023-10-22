@@ -127,11 +127,6 @@ MAX_VERIFICATION_COOLDOWN = 10 * 60  # 10 minutes
 # Guardian init
 ANONYMOUS_USER_NAME = None
 
-# DeepL settings
-# DEEPL_ENDPOINT = "https://api.deepl.com/v2/translate"
-# DEEPL_AUTH_KEY = os.getenv("DEEPL_AUTH_KEY", "4f190959-75dc-d38e-fa71-42d16121bfd9")
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
