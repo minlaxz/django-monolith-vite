@@ -173,3 +173,4 @@ mediafiles
 .vault
 db-replication
 !deprecated-cicd/db-replication
+dev.env
