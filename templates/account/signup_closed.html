@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block mainblock %}
+<div class="col s12 grey lighten-5 padding-large center-wrapper">
+  <div class="col s8 offset-s2 h6 offset-h3 padding-large white round-corner z-depth-2">
+    <h6 class="center">{% trans "Well, sign up is not accepting here." %}</h6>
+    <p>
+      Please sign up from <a href="{% url 'app_public' %}">here</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Prevent indexing from search engines-->
+  <meta name="robots" content="noindex">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  {% block beforetitle %}
+  {% endblock %}
+
+  <title>
+    {% block title %}
+    DMV Demo
+    {% endblock %}
+  </title>
+
+  {% block script %}
+  {% endblock %}
+
+  <script type="text/javascript">
+    // csrf
+    function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    $.ajaxSetup({
+      beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          // setup csrf token given by django
+          xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        }
+      }
+    });
+
+  </script>
+</head>
+
+<body>
+
+  <div class="row">
+    {% block mainblock %}
+
+    <div class="col m9 s12 no-padding">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+    {% endblock %}
+  </div>
+
+  {% block footer %}
+  <div
+    style="background: #f2f2f2; font-size: 12px; padding: 30px 0px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#33373a;"
+    data-darkreader-inline-bgimage="" data-darkreader-inline-bgcolor="">
+    <div style="max-width:600px;margin:auto;text-align:center">
+      <a href="{% url 'account_login' %}" class="center">
+        <p style="margin-bottom:3px;color: #bfc7ce;">
+          minlaxz
+          <span id="copyrightYear"></span>
+        </p>
+      </a>
+    </div>
+    <script>
+      document.getElementById("copyrightYear").innerHTML = new Date().getFullYear();
+    </script>
+  </div>
+  {% endblock %}
+
+  <!--JavaScript at end of body for optimized loading-->
+  {% block loaded_script %}
+  {% endblock %}
+</body>
+
+</html>
