@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block top-nav %}
+{% endblock %}
+
+{% block mainblock %}
+<div style="
+    display: flex; 
+    width: 100vw; 
+    height: 75vh;
+    align-items: center;
+    justify-content: center;
+    ">
+    <div class="padding-large white round-corner z-depth-1">
+        <div class="row">
+            <p class="center">
+                {% trans "Sorry, we have lost!" %}
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
