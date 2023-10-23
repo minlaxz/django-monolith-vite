@@ -27,13 +27,15 @@ else:
     if _ENV == "development":
         env_injector.update_configs_from_env()
         # env_injector.update_configs_from_vault(for_env=_ENV)
-    elif _ENV == "testing":
+    elif _ENV == "staging":
         env_injector.update_configs_from_env()
 
 
 base_settings = [
     "components/common.py",  # standard django settings
     "components/cleanhtmlfields.py",
+    "components/recaptcha.py",
+    "components/email.py",
     # "components/axe_c.py",
     "components/auth.py",  # authentications, object permissons and validations
     "components/logging.py",  # logging settings
