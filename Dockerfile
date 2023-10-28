@@ -1,5 +1,5 @@
-ARG PYTHON_VERSION=3.9.18-slim-bullseye
-FROM --platform=linux/amd64 python:${PYTHON_VERSION} as builder
+ARG PYTHON_VERSION=python3.9-nodejs16-slim
+FROM --platform=linux/amd64 nikolaik/python-nodejs:${PYTHON_VERSION} as builder
 
 WORKDIR /usr/src/app
 
@@ -22,6 +22,8 @@ COPY ./requirements.txt .
 # RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 RUN pip install -r requirements.txt
 
+COPY ./frontend .
+RUN cd frontend && yarn && yarn run build
 
 FROM --platform=linux/amd64 python:${PYTHON_VERSION} as runner
 
@@ -60,6 +62,7 @@ WORKDIR ${APP_HOME}
 
 # copy project
 COPY . ${APP_HOME}
+COPY --from=builder _dist frontend/
 # RUN python manage.py migrate
 # RUN python manage.py collectstatic --noinput --clear
 
