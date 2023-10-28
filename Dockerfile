@@ -25,7 +25,7 @@ RUN pip install -r requirements.txt
 COPY ./frontend .
 RUN cd frontend && yarn && yarn run build
 
-FROM --platform=linux/amd64 python:${PYTHON_VERSION} as runner
+FROM --platform=linux/amd64 nikolaik/python-nodejs:${PYTHON_VERSION} as runner
 
 WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app/venv venv
