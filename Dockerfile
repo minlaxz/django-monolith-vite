@@ -62,7 +62,7 @@ WORKDIR ${APP_HOME}
 
 # copy project
 COPY . ${APP_HOME}
-COPY --from=builder /usr/src/app/_dist frontend/
+COPY --from=builder /usr/src/app/_dist frontend/_dist
 # RUN python manage.py migrate
 # RUN python manage.py collectstatic --noinput --clear
 
