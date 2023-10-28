@@ -1,0 +1,18 @@
+__pycache__
+site-packages
+.git/
+staticfiles
+mediafiles
+
+*.sqlite
+# *.env
+Proc
+
+# frontend but _dist is needed
+frontend/node_modules 
+
+# fly configs
+fly.*
+# editor
+.devcontainer
+.vscode

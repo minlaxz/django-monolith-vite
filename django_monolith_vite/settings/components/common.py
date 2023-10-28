@@ -50,6 +50,7 @@ INSTALLED_APPS: Tuple[str, ...] = (
     "django_vite",
     "guardian",
     "django_fsm",
+    "django_extensions",
     # Local Apps,
     "dmv_home",
     "frontend",
@@ -108,7 +109,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static/"),
-    # os.path.join(BASE_DIR, "frontend/_dist/"),
+    os.path.join(BASE_DIR, "frontend/_dist/"),
 )
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # [END staticurl]

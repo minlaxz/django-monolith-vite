@@ -27,3 +27,9 @@ Pillow==9.1.0
 graphviz==0.20.1
 django-redis==5.4.0
 django-querycount==0.8.3
+whitenoise==6.6.0
+six==1.16.0
+django-extensions==3.1.5
+
+# Deploying to fly.io
+# dj_database_url==2.1.0

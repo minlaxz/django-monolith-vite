@@ -4,11 +4,9 @@ SECURITY WARNING: don't run with debug turned on in production!
 """
 import os
 
-from django_monolith_vite.settings.components import logging
 from django_monolith_vite.settings.components.common import (
     INSTALLED_APPS,
     MIDDLEWARE,
-    TIME_ZONE,
 )
 
 
@@ -67,15 +65,6 @@ DATABASES = {
 DATABASES["default"]["CONN_MAX_AGE"] = 0
 #
 
-# Email configuration
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-EMAIL_HOST_USER = "minminlaxz@gmail.com"
-DEFAULT_FROM_EMAIL = "minlaxz.io <minminlaxz@gmail.com>"
-SENDGRID_API_KEY = os.environ["SENDGRID_API_KEY"]
-SENDGRID_SANDBOX_MODE_IN_DEBUG = True
-SENDGRID_ECHO_TO_STDOUT = True
-#
-
 # Development Config: query count.
 QUERYCOUNT = {
     "THRESHOLDS": {
@@ -90,59 +79,8 @@ QUERYCOUNT = {
     "RESPONSE_HEADER": "X-DjangoQueryCount-Count",
 }
 
-# Celery and beat configuration
-CELERY_TIMEZONE = TIME_ZONE
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
-CELERY_ACCEPT_CONTENT = ["json"]
-CELERY_TASK_SERIALIZER = "json"
-CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
-#
-
-
-# Recptcha configuration
-RECAPTCHA_REQUIRED_SCORE = 0.5
-# For V3
-RECAPTCHA_PUBLIC_KEY = os.environ["RECAPTCHA_PUBLIC_KEY"]
-RECAPTCHA_PRIVATE_KEY = os.environ["RECAPTCHA_PRIVATE_KEY"]
-
-# Django health check
-REDIS_URL = "redis://localhost:6379"
-
-# Caching
-# https://docs.djangoproject.com/en/3.2/topics/cache/
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-#     },
-# }
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
-
-
-# django-axes
-# https://django-axes.readthedocs.io/en/latest/4_configuration.html#configuring-caches
-AXES_CACHE = "default"
-
-
-# Need by slack => no trailing slash needed
-APP_DOMAIN = "https://localhost:8000"
-SLACK_CALLBACK = APP_DOMAIN
-
-
-# logging settings
-# LOGGING = {**logging.LOGGING}
-
 # Django-Vite use HMR or not.
-DJANGO_VITE_DEV_MODE = bool(int(os.environ.get("DJANGO_VITE_DEV_MODE", 1)))
+DJANGO_VITE_DEV_MODE = 1
 
 
 
