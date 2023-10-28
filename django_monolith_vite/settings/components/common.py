@@ -50,6 +50,7 @@ INSTALLED_APPS: Tuple[str, ...] = (
     "django_vite",
     "guardian",
     "django_fsm",
+    "django_extensions",
     # Local Apps,
     "dmv_home",
     "frontend",

@@ -4,7 +4,6 @@ SECURITY WARNING: don't run with debug turned on in production!
 """
 import os
 
-from django_monolith_vite.settings.components import logging
 from django_monolith_vite.settings.components.common import (
     INSTALLED_APPS,
     MIDDLEWARE,

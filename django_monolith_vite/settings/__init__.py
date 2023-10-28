@@ -24,11 +24,10 @@ if not _ENV:
     sys.exit(1)
 else:
     logger.info(f"LOG: current environment: {_ENV}")
-    if _ENV == "development":
+    if _ENV == "development" or _ENV == "testing":
         env_injector.update_configs_from_env()
-        # env_injector.update_configs_from_vault(for_env=_ENV)
-    elif _ENV == "staging":
-        env_injector.update_configs_from_env()
+    # else:
+    # env_injector.update_configs_from_vault(for_env=_ENV)
 
 
 base_settings = [
