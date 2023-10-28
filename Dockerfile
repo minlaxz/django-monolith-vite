@@ -60,8 +60,8 @@ WORKDIR ${APP_HOME}
 
 # copy project
 COPY . ${APP_HOME}
-RUN python manage.py migrate
-RUN python manage.py collectstatic --noinput --clear
+# RUN python manage.py migrate
+# RUN python manage.py collectstatic --noinput --clear
 
 EXPOSE 8000
 RUN chown -R app:app ${APP_HOME}
