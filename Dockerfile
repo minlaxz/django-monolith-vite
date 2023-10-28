@@ -24,7 +24,7 @@ RUN pip install -r requirements.txt
 
 COPY ./frontend .
 WORKDIR /usr/src/app/frontend 
-RUN yarn && yarn run build
+RUN yarn && yarn run build && ls
 
 FROM --platform=linux/amd64 nikolaik/python-nodejs:${PYTHON_VERSION} as runner
 
