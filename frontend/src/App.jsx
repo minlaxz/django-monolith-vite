@@ -1,15 +1,32 @@
+import { useRoutes } from "react-router-dom";
+import * as routes from "@/routes"
 
-const LoadedApp = () => {
+
+const InternalApp = ({ data }) => {
+  let setRoute = null;
+  switch (data.redirectRoute) {
+    case "privateRoutes":
+      setRoute = routes.privateRoutes;
+      break;
+    case "publicRoutes":
+      setRoute = routes.publicRoutes;
+      break;
+    default:
+      setRoute = routes.publicRoutes;
+  }
+
   return (
     <>
-      <h3>
-        Hello my dear authenticed user!
-      </h3>
-      <p>
-        There's nothing muach! you can do here but <a href="/accounts/logout/">Logout</a>
-      </p>
+      {useRoutes(setRoute)}
     </>
   )
 }
 
-export default LoadedApp;
+const App = () => {
+  const data = {redirectRoute: "privateRoutes"}
+  return (
+    <InternalApp data={data} />
+  )
+};
+
+export default App;
