@@ -54,6 +54,7 @@ INSTALLED_APPS: Tuple[str, ...] = (
     # Local Apps,
     "dmv_home",
     "frontend",
+    "api",
 )
 
 MIDDLEWARE: Tuple[str, ...] = (
